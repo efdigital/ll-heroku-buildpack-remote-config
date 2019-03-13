@@ -1,0 +1,23 @@
+{
+  "name": "heroku-buildpack-remote-config",
+  "version": "1.0.0",
+  "description": "Get environment variables remotely",
+  "main": "index.js",
+  "dependencies": {
+    "heroku-client": "^3.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/processcomplete/heroku-buildpack-remote-config.git"
+  },
+  "author": "Process Complete Ltd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/processcomplete/heroku-buildpack-remote-config/issues"
+  },
+  "homepage": "https://github.com/processcomplete/heroku-buildpack-remote-config#readme"
+}
