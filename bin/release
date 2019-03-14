@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export BUILD_DIR=$1
+cd scripts && npm run clean
