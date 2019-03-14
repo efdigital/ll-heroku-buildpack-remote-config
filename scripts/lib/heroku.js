@@ -1,5 +1,11 @@
 const Heroku = require('heroku-client')
-const heroku = new Heroku({ token: process.env.HEROKU_BUILDPACK_REMOTE_CONFIG_API_TOKEN })
+
+const token = process.env.HEROKU_BUILDPACK_REMOTE_CONFIG_API_TOKEN
+if (!token) {
+  throw new Error("HEROKU_BUILDPACK_REMOTE_CONFIG_API_TOKEN is not set")
+}
+
+const heroku = new Heroku({ token })
 
 const getAppConfigVars = app => heroku.get(`/apps/${app}/config-vars`)
 

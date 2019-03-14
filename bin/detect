@@ -5,5 +5,6 @@ if type -P npm > /dev/null
     echo "-----> Node is installed: OK"
     exit 0
   else
-    echo "-----> Node is not installed: cannot run buildback"
+    echo "-----> Node is not installed: FAIL"
+    exit 1
   fi
