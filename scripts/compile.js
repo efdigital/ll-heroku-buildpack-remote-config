@@ -1,7 +1,7 @@
 const fs = require('fs')
-const { log, verbose } = require('../lib/logging')
-const { path } = require('../lib/file')
-const heroku = require('../lib/heroku')
+const { log, verbose } = require('./lib/logging')
+const { path } = require('./lib/file')
+const heroku = require('./lib/heroku')
 
 const apps = function (list) {
   if (!list || !list.length) {

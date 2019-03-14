@@ -1,6 +1,6 @@
 const fs = require('fs')
-const { log, verbose } = require('../lib/logging')
-const { path } = require('../lib/file')
+const { log, verbose } = require('./lib/logging')
+const { path } = require('./lib/file')
 
 log('tidying up config values')
 if (fs.existsSync(path)) {
