@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if type -P npm > /dev/null
+if type -P npm;
   then
     echo "-----> Node is installed: OK"
     exit 0
