@@ -8,9 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "detect": "bin/detect",
-    "compile": "bin/compile",
-    "release": "bin/release"
+    "compile": "node ./scripts/compile.js",
+    "release": "node ./scripts/release.js"
   },
   "repository": {
     "type": "git",
