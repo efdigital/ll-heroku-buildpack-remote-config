@@ -7,7 +7,7 @@ const apps = function (list) {
   if (!list || !list.length) {
     return []
   } else {
-    return list.split(';')
+    return list.split(' ')
   }
 }(process.env.HEROKU_BUILDPACK_REMOTE_CONFIG_APPS)
 
@@ -15,7 +15,7 @@ const keys = function (list) {
   if (!list || !list.length) {
     return ['*']
   } else {
-    return list.split(';')
+    return list.split(' ')
   }
 }(process.env.HEROKU_BUILDPACK_REMOTE_CONFIG_KEYS)
 
