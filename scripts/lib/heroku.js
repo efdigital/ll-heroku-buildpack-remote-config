@@ -15,8 +15,11 @@ const getAppConfigVars = app => {
 }
 
 const filterByKeys = (result, keys) => Object.keys(result).reduce((filtered, key) => {
-  if (keys.contains(key)) {
+  if (keys.some(k => k === key)) {
+    verbose(`exporting ${key}`)
     filtered[key] = result[key]
+  } else {
+    verbose(`skipping ${key}`)
   }
   return filtered
 }, {})
@@ -24,19 +27,22 @@ const filterByKeys = (result, keys) => Object.keys(result).reduce((filtered, key
 const unfiltered = (result => result)
 
 const config = (apps, keys) => {
+  log("getting config from heroku")
   return new Promise((resolve, reject) => {
 
     if (!Array.isArray(apps)) {
+      verbose("Invalid list of apps")
       return reject(new Error("Invalid list of apps"))
     }
 
     if (!Array.isArray(keys)) {
+      verbose("Invalid list of keys")
       return reject(new Error("Invalid list of keys"))
     }
 
-    const filter = keys.contains('*') ? unfiltered : filterByKeys
+    const filter = keys.some(k => k === '*') ? unfiltered : filterByKeys
 
-    log("getting values from heroku")
+    log("calling heroku api")
     const promises = apps.map(getAppConfigVars)
 
     return Promise.all(promises)
