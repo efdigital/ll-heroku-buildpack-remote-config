@@ -1,4 +1,5 @@
 const Heroku = require('heroku-client')
+const { log, verbose } = require('./logging')
 
 const token = process.env.HEROKU_BUILDPACK_REMOTE_CONFIG_API_TOKEN
 if (!token) {
@@ -7,7 +8,11 @@ if (!token) {
 
 const heroku = new Heroku({ token })
 
-const getAppConfigVars = app => heroku.get(`/apps/${app}/config-vars`)
+const getAppConfigVars = app => {
+  const path = `/apps/${app}/config-vars`
+  verbose(path)
+  return heroku.get(path)
+}
 
 const filterByKeys = (result, keys) => Object.keys(result).reduce((filtered, key) => {
   if (keys.contains(key)) {
@@ -22,26 +27,32 @@ const config = (apps, keys) => {
   return new Promise((resolve, reject) => {
 
     if (!Array.isArray(apps)) {
-      reject(new Error("Invalid list of apps"))
+      return reject(new Error("Invalid list of apps"))
     }
 
     if (!Array.isArray(keys)) {
-      reject(new Error("Invalid list of keys"))
+      return reject(new Error("Invalid list of keys"))
     }
 
     const filter = keys.contains('*') ? unfiltered : filterByKeys
 
-    return Promise.all(apps.map(getAppConfigVars)).then(
-      results => {
-        const hash = results.reduce((hash, result, index) => {
-          const app = apps[index]
-          hash[app] = filter(result, keys)
-          return hash
-        }, {})
-        resolve(hash)
-      },
-      reject
-    )
+    log("getting values from heroku")
+    const promises = apps.map(getAppConfigVars)
+
+    return Promise.all(promises)
+    .then(results => {
+      verbose("values retrieved")
+      const hash = results.reduce((hash, result, index) => {
+        const app = apps[index]
+        hash[app] = filter(result, keys)
+        return hash
+      }, {})
+      return resolve(hash)
+    })
+    .catch(error => {
+      verbose("error getting values from heroku")
+      return reject(error)
+    })
   })
 }
 
