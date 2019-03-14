@@ -6,5 +6,5 @@ test_detect() {
   cd $BUILDPACK_HOME
   detect
   assertCapturedSuccess
-  assertCaptured "-----> Node is installed: OK"
+  assertCaptured "heroku-buildpack-remote-config"
 }
