@@ -1,8 +1,2 @@
 #!/bin/sh
-
-if type -P npm;
-  then
-    echo "heroku-buildpack-remote-config" && exit 0
-  else
-    exit 1
-  fi
+echo "heroku-buildpack-remote-config" && exit 0
