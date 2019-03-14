@@ -8,8 +8,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "node ./compile.js"
+    "detect": "bin/detect",
+    "compile": "bin/compile",
+    "release": "bin/release"
   },
   "repository": {
     "type": "git",
