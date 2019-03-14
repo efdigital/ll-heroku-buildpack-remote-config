@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if type -P npm > /dev/null
+  then
+    echo "-----> Node is installed: OK"
+    exit 0
+  else
+    echo "-----> Node is not installed: cannot run buildback"
+  fi
