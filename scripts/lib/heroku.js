@@ -24,7 +24,10 @@ const filterByKeys = (result, keys) => Object.keys(result).reduce((filtered, key
   return filtered
 }, {})
 
-const unfiltered = (result => result)
+const unfiltered = (result => {
+  Object.keys(result).forEach(key => verbose(`exporting ${key}`))
+  return result
+})
 
 const config = (apps, keys) => {
   log("getting config from heroku")
@@ -50,6 +53,7 @@ const config = (apps, keys) => {
       verbose("values retrieved")
       const hash = results.reduce((hash, result, index) => {
         const app = apps[index]
+        log(`values for app: ${app}`)
         hash[app] = filter(result, keys)
         return hash
       }, {})
