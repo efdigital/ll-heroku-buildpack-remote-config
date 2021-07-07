@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "compile": "node ./scripts/compile.js",
+    "compile": "node ./scripts/compile.js && ember build --production",
     "release": "node ./scripts/release.js"
   },
   "repository": {
