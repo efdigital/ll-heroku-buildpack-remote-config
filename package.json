@@ -1,6 +1,6 @@
 {
   "name": "heroku-buildpack-remote-config",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Get environment variables remotely",
   "main": "index.js",
   "dependencies": {
