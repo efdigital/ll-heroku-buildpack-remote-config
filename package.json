@@ -4,7 +4,7 @@
   "description": "Get environment variables remotely",
   "main": "index.js",
   "dependencies": {
-    "heroku-client": "^3.0.7"
+    "heroku-client": "^3.1.0"
   },
   "devDependencies": {},
   "scripts": {
