@@ -1,8 +1,15 @@
 {
-  "name": "heroku-buildpack-remote-config",
+  "name": "@efdigital/ll-heroku-buildpack-remote-config",
   "version": "1.1.0",
   "description": "Get environment variables remotely",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/efdigital/ll-heroku-buildpack-remote-config.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "heroku-client": "^3.1.0"
   },
@@ -10,10 +17,6 @@
   "scripts": {
     "compile": "node ./scripts/compile.js",
     "release": "node ./scripts/release.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/processcomplete/heroku-buildpack-remote-config.git"
   },
   "author": "Process Complete Ltd",
   "license": "MIT",
